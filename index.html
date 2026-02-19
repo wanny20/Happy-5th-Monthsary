@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For You ❤️</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg"></div>
+
+  <!-- PAGE 1 -->
+  <main id="page-front" class="page active">
+    <div class="center">
+      <div class="front-card">
+        <img class="gift-img" src="assets/gift.png" alt="Gift" />
+        <button id="openBtn" class="btn primary big">OPEN</button>
+      </div>
+    </div>
+
+    <!-- Password Modal -->
+    <div id="modal" class="modal hidden" aria-hidden="true">
+      <div class="modal-card">
+        <h2>Password</h2>
+        <p class="hint">Hint: <b>The Day We Made it Official</b></p>
+
+        <input id="passInput" class="input" type="password" placeholder="September 20, 2025" />
+        <p id="errMsg" class="error hidden">Incorrect password.</p>
+
+        <div class="row">
+          <button id="cancelBtn" class="btn ghost">Cancel</button>
+          <button id="submitBtn" class="btn primary">Enter</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="flash" class="flash hidden"></div>
+  </main>
+
+  <!-- PAGE 2 -->
+  <main id="page-box" class="page">
+    <div class="center">
+      <div class="xbox-wrap">
+        <div class="xbox" aria-label="Explosion box">
+
+          <!-- Hearts behind -->
+          <svg class="xheart xh-top" viewBox="0 0 64 58" aria-hidden="true">
+            <path d="M32 54S4 36 4 18C4 8 12 2 20 2c6 0 10 3 12 7 2-4 6-7 12-7 8 0 16 6 16 16C60 36 32 54 32 54Z"/>
+          </svg>
+          <svg class="xheart xh-right" viewBox="0 0 64 58" aria-hidden="true">
+            <path d="M32 54S4 36 4 18C4 8 12 2 20 2c6 0 10 3 12 7 2-4 6-7 12-7 8 0 16 6 16 16C60 36 32 54 32 54Z"/>
+          </svg>
+          <svg class="xheart xh-bottom" viewBox="0 0 64 58" aria-hidden="true">
+            <path d="M32 54S4 36 4 18C4 8 12 2 20 2c6 0 10 3 12 7 2-4 6-7 12-7 8 0 16 6 16 16C60 36 32 54 32 54Z"/>
+          </svg>
+          <svg class="xheart xh-left" viewBox="0 0 64 58" aria-hidden="true">
+            <path d="M32 54S4 36 4 18C4 8 12 2 20 2c6 0 10 3 12 7 2-4 6-7 12-7 8 0 16 6 16 16C60 36 32 54 32 54Z"/>
+          </svg>
+
+          <!-- Center tile -->
+          <button class="xtile x-center" data-id="0" type="button" aria-label="Center photo">
+            <img class="xtile-img" src="assets/center.png" alt="Center Photo" />
+          </button>
+
+          <!-- 4 side tiles -->
+          <button class="xtile x-top" data-id="1" type="button" aria-label="Photo 1">
+            <img class="xtile-img" src="assets/p1.png" alt="Photo 1" />
+          </button>
+
+          <button class="xtile x-right" data-id="2" type="button" aria-label="Photo 2">
+            <img class="xtile-img" src="assets/p2.png" alt="Photo 2" />
+          </button>
+
+          <button class="xtile x-bottom" data-id="3" type="button" aria-label="Photo 3">
+            <img class="xtile-img" src="assets/p3.png" alt="Photo 3" />
+          </button>
+
+          <button class="xtile x-left" data-id="4" type="button" aria-label="Photo 4">
+            <img class="xtile-img" src="assets/p4.png" alt="Photo 4" />
+          </button>
+        </div>
+
+        <button id="backToFront" class="btn ghost">Back</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- PAGE 3 -->
+  <main id="page-letter" class="page">
+    <div class="center">
+      <div class="letter-card">
+        <img id="selectedImg" class="selected-img" src="" alt="Selected" />
+        <img id="letterImg" class="letter-img hidden" src="" alt="Letter" />
+        <div id="letterText" class="letter-text hidden"></div>
+      </div>
+
+      <button id="backToBox" class="btn primary">Back</button>
+    </div>
+  </main>
+
+  <!-- Zoom transition layer -->
+  <div id="zoomLayer" class="zoom-layer"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

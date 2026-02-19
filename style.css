@@ -1,0 +1,267 @@
+:root{
+  --bg1:#efeaff;
+  --bg2:#d8cff8;
+  --card: rgba(255,255,255,.75);
+  --stroke: rgba(0,0,0,.14);
+  --shadow: 0 18px 55px rgba(0,0,0,.16);
+  --btn:#f2c230;
+  --purple:#7a3cff;
+}
+
+*{ box-sizing:border-box; margin:0; padding:0; }
+body{
+  min-height:100vh;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  overflow-x:hidden;
+}
+
+/* Background */
+.bg{
+  position:fixed; inset:0; z-index:-1;
+  background:
+    radial-gradient(1000px 700px at 30% 20%, var(--bg1), transparent 60%),
+    radial-gradient(1000px 700px at 80% 70%, var(--bg2), transparent 60%),
+    linear-gradient(180deg, #f7f4ff, #d7cffb);
+}
+
+/* Pages */
+.page{ display:none; min-height:100vh; padding:18px; }
+.page.active{ display:block; }
+
+.center{
+  min-height: calc(100vh - 36px);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:16px;
+}
+
+/* Buttons */
+.btn{
+  border:none;
+  cursor:pointer;
+  border-radius:999px;
+  padding: 12px 18px;
+  font-weight:900;
+  box-shadow: 0 14px 40px rgba(0,0,0,.12);
+  transition: transform .12s ease, filter .12s ease;
+}
+.btn:active{ transform: translateY(1px); }
+.btn.primary{ background: var(--btn); color:#fff; }
+.btn.primary:hover{ filter: brightness(1.03); }
+.btn.ghost{
+  background: rgba(255,255,255,.65);
+  border: 1px solid var(--stroke);
+  color:#222;
+}
+.btn.big{ font-size:30px; padding: 16px 38px; }
+
+/* Page 1 */
+.front-card{
+  width:min(420px, 92vw);
+  background: var(--card);
+  border: 1px solid rgba(255,255,255,.6);
+  border-radius:22px;
+  padding:18px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(10px);
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+  align-items:center;
+}
+.gift-img{ width:min(260px, 70vw); height:auto; }
+
+/* Modal */
+.modal{
+  position:fixed; inset:0;
+  display:flex; align-items:center; justify-content:center;
+  padding:18px;
+  background: rgba(0,0,0,.35);
+  z-index:20;
+}
+.hidden{ display:none !important; }
+.modal-card{
+  width:min(420px, 100%);
+  background: rgba(255,255,255,.88);
+  border-radius:18px;
+  padding:18px;
+  box-shadow: var(--shadow);
+}
+.hint{ margin: 8px 0 12px; opacity:.85; }
+.input{
+  width:100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--stroke);
+  outline:none;
+  font-size:16px;
+}
+.error{ margin-top:10px; color:#b00020; font-weight:800; }
+.row{ display:flex; justify-content:flex-end; gap:10px; margin-top:12px; }
+
+/* Flash */
+.flash{
+  position:fixed; inset:0; z-index:30;
+  background: radial-gradient(circle at 50% 55%, rgba(255,255,255,.95), rgba(255,255,255,0) 60%),
+              rgba(255,255,255,.85);
+  animation: flashAnim 650ms ease forwards;
+}
+@keyframes flashAnim{
+  0%{ opacity:0; }
+  35%{ opacity:1; }
+  100%{ opacity:0; }
+}
+
+/* Page 2 */
+.xbox-wrap{
+  width: min(520px, 96vw);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:16px;
+}
+.xbox{
+  width: min(420px, 92vw);
+  aspect-ratio: 1 / 1;
+  position: relative;
+  display:grid;
+  place-items:center;
+}
+
+/* Hearts */
+.xheart{
+  position:absolute;
+  width: 260px;
+  height:auto;
+  fill:none;
+  stroke: rgba(255,0,0,.75);
+  stroke-width: 3.6;
+  filter: drop-shadow(0 10px 14px rgba(0,0,0,.10));
+  opacity:.95;
+  z-index:1;
+  pointer-events:none;
+}
+.xh-top{ transform: translateY(-140px); }
+.xh-right{ transform: translateX(140px) rotate(90deg); }
+.xh-bottom{ transform: translateY(140px) rotate(180deg); }
+.xh-left{ transform: translateX(-140px) rotate(-90deg); }
+
+/* Tiles */
+.xtile{
+  width: 140px;
+  height: 140px;
+  position:absolute;
+  top:50%;
+  left:50%;
+  border-radius: 16px;
+  background: var(--purple);
+  border: 2px solid rgba(0,0,0,.18);
+  box-shadow: var(--shadow);
+  overflow:hidden;
+  z-index:5;
+  padding:0;
+  cursor:pointer;
+  appearance:none;
+  -webkit-appearance:none;
+  outline:none;
+  transition: transform .12s ease, filter .12s ease;
+}
+.xtile:hover{ filter: brightness(1.03); }
+
+.xtile-img{
+  width:100%;
+  height:100%;
+  object-fit: cover;
+  display:block;
+}
+
+/* Positions */
+.x-center{ transform: translate(-50%, -50%); }
+.x-top{    transform: translate(-50%, calc(-50% - 150px)); }
+.x-right{  transform: translate(calc(-50% + 150px), -50%); }
+.x-bottom{ transform: translate(-50%, calc(-50% + 150px)); }
+.x-left{   transform: translate(calc(-50% - 150px), -50%); }
+
+/* Page 3 */
+.letter-card{
+  width:min(860px, 92vw);
+  background: var(--card);
+  border-radius: 22px;
+  padding: 16px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(10px);
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+.selected-img{
+  width:100%;
+  height: min(62vh, 560px);
+  object-fit: contain;
+  background: rgba(0,0,0,.06);
+  border-radius: 16px;
+  border: 1px solid var(--stroke);
+}
+
+.letter-img{
+  width:100%;
+  border-radius: 16px;
+  border: 1px solid var(--stroke);
+  display:block;
+}
+
+.letter-text{
+  background: rgba(255,255,255,.92);
+  border: 1px solid var(--stroke);
+  border-radius: 16px;
+  padding: 16px;
+  line-height: 1.75;
+  font-size: 18px;
+  white-space: pre-wrap;
+  font-family: "Segoe Print","Bradley Hand","Comic Sans MS",cursive;
+}
+
+/* Zoom overlay */
+.zoom-layer{
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+}
+.zoom-clone{
+  position: fixed;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 18px 55px rgba(0,0,0,.22);
+  will-change: transform, width, height, left, top, opacity;
+  transition: transform 420ms cubic-bezier(.2,.9,.2,1), opacity 220ms ease;
+  opacity: 1;
+}
+.zoom-clone img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display:block;
+}
+.page.fading-out{
+  opacity: 0;
+  transition: opacity 220ms ease;
+}
+
+/* Responsive */
+@media (max-width: 420px){
+  .xtile{ width:124px; height:124px; }
+  .xheart{ width:240px; }
+  .xh-top{ transform: translateY(-120px); }
+  .xh-right{ transform: translateX(120px) rotate(90deg); }
+  .xh-bottom{ transform: translateY(120px) rotate(180deg); }
+  .xh-left{ transform: translateX(-120px) rotate(-90deg); }
+
+  .x-top{    transform: translate(-50%, calc(-50% - 132px)); }
+  .x-right{  transform: translate(calc(-50% + 132px), -50%); }
+  .x-bottom{ transform: translate(-50%, calc(-50% + 132px)); }
+  .x-left{   transform: translate(calc(-50% - 132px), -50%); }
+}
